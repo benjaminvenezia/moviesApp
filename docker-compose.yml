@@ -29,15 +29,7 @@ services:
       - ./insertions.sql:/docker-entrypoint-initdb.d/insertions.sql
 
   pgadmin:
-<<<<<<< HEAD
-<<<<<<< HEAD
     image: dpage/pgadmin4:9.7
-=======
-    image: dpage/pgadmin4:9.6
->>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
-=======
-    image: dpage/pgadmin4:9.7
->>>>>>> 8a20b54 (Add containerisation (2/3))
     container_name: pgadmin
     restart: always
     environment:

@@ -3,34 +3,18 @@ FROM golang:1.25
 
 WORKDIR /app
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Installer bash, git et client PostgreSQL
 RUN apt-get update && apt-get install -y bash git postgresql-client && rm -rf /var/lib/apt/lists/*
-=======
-# Installer bash et git (Debian/Ubuntu)
-RUN apt-get update && apt-get install -y bash git && rm -rf /var/lib/apt/lists/*
->>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
-=======
+
 # Installer bash, git et client PostgreSQL
 RUN apt-get update && apt-get install -y bash git postgresql-client && rm -rf /var/lib/apt/lists/*
->>>>>>> 8a20b54 (Add containerisation (2/3))
 
 # Installer Air
 RUN go install github.com/air-verse/air@latest
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 # Installer Goose CLI
 RUN go install github.com/pressly/goose/v3/cmd/goose@latest
 
-=======
->>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
-=======
-# Installer Goose CLI
-RUN go install github.com/pressly/goose/v3/cmd/goose@latest
-
->>>>>>> 8a20b54 (Add containerisation (2/3))
 # Copier les fichiers de modules et télécharger les dépendances
 COPY go.mod go.sum ./
 RUN go mod download
@@ -41,21 +25,8 @@ COPY . .
 # Exposer le port de l'app
 EXPOSE 8080
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 8a20b54 (Add containerisation (2/3))
-COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-ENTRYPOINT ["/entrypoint.sh"]
+COPY ./entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+ENTRYPOINT ["/app/entrypoint.sh"]
 # Lancer Air
 CMD ["air", "-c", ".air.toml"]
-
-
-<<<<<<< HEAD
-=======
-# Lancer Air
-CMD ["air", "-c", ".air.toml"]
->>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
-=======
->>>>>>> 8a20b54 (Add containerisation (2/3))

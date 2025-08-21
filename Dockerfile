@@ -28,13 +28,5 @@ COPY .env .env
 RUN apk add --no-cache bash
 
 # Entrypoint pour l'application
-<<<<<<< HEAD
-<<<<<<< HEAD
 ENTRYPOINT ["./entrypoint.sh"]
-=======
-ENTRYPOINT ["./myapp"]
->>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
-=======
-ENTRYPOINT ["./entrypoint.sh"]
->>>>>>> 8a20b54 (Add containerisation (2/3))
 CMD []
