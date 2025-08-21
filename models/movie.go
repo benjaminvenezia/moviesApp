@@ -6,7 +6,7 @@ type Movie struct {
 	Title       string
 	Tagline     string
 	ReleaseYear int
-	Genre       []Genre
+	Genres      []Genre
 	Overview    *string
 	Score       *float32
 	Popularity  *float32

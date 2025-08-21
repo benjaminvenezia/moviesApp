@@ -1,0 +1,55 @@
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile.dev #CHANGER ENTRE DOCKERFILE AU BESOIN
+    container_name: app
+    restart: always
+    env_file:
+      - .env
+    depends_on:
+      - postgres
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+
+  postgres:
+    image: postgres:17
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./insertions.sql:/docker-entrypoint-initdb.d/insertions.sql
+
+  pgadmin:
+<<<<<<< HEAD
+<<<<<<< HEAD
+    image: dpage/pgadmin4:9.7
+=======
+    image: dpage/pgadmin4:9.6
+>>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
+=======
+    image: dpage/pgadmin4:9.7
+>>>>>>> 8a20b54 (Add containerisation (2/3))
+    container_name: pgadmin
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "8081:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+volumes:
+  db_data:
+  pgadmin_data:

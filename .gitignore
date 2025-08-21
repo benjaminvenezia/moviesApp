@@ -1,0 +1,11 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+.env
+
+=======
+.env
+>>>>>>> 065b666 (Add containerisation (app, postgres, pgadmin))
+=======
+.env
+>>>>>>> 31c710f (Add containerisation (app, postgres, pgadmin))
