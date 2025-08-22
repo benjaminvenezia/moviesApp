@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"os"
 
+	"github.com/benjaminvenezia/app/data"
 	"github.com/benjaminvenezia/app/handlers"
 	"github.com/benjaminvenezia/app/logger"
 	"github.com/joho/godotenv"
 
 	_ "github.com/lib/pq"
 )
-
 
 func main() {
 	logInstance := initializeLogger()
@@ -36,7 +36,18 @@ func main() {
 
 	defer db.Close()
 
-	movieHandler := handlers.MovieHandler{}
+	//Initialize Data Repository for Movies
+	movieRepo, err := data.NewMovieRepository(db, logInstance)
+
+	if err != nil {
+		log.Fatalf("failed to initialize repository")
+	}
+
+	//Initialize Handler
+	movieHandler := handlers.MovieHandler{
+		Storage: movieRepo,
+		Logger:  logInstance,
+	}
 
 	//another handlers
 	http.HandleFunc("/api/movies/top", movieHandler.GetTopMovies)
@@ -48,12 +59,11 @@ func main() {
 	const addr = ":8080"
 
 	err = http.ListenAndServe(addr, nil)
-	
+
 	if err != nil {
 		logInstance.Error("Server failed: %v", err)
 	}
 }
-
 
 func initializeLogger() *logger.Logger {
 

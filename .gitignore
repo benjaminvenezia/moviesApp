@@ -1,2 +1,8 @@
 .env
 
+/tmp/build-errors.log
+/.idea/dataSources.xml
+/.idea/modules.xml
+/.idea/moviesApp.iml
+/.idea/sqldialects.xml
+/.idea/vcs.xml
