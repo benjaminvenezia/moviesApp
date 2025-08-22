@@ -44,14 +44,14 @@ func main() {
 	}
 
 	//Initialize Handler
-	movieHandler := handlers.MovieHandler{
-		Storage: movieRepo,
-		Logger:  logInstance,
-	}
+	movieHandler := handlers.NewMovieHandler(movieRepo, logInstance)
 
 	//another handlers
-	http.HandleFunc("/api/movies/top", movieHandler.GetTopMovies)
-	http.HandleFunc("/api/movies/random", movieHandler.GetRandomMovies)
+	http.HandleFunc("/api/movies/top/", movieHandler.GetTopMovies)
+	http.HandleFunc("/api/movies/random/", movieHandler.GetRandomMovies)
+	http.HandleFunc("/api/movies/search/", movieHandler.SearchMovies)
+	http.HandleFunc("/api/movies/", movieHandler.GetMovie) // api/movies/140
+	http.HandleFunc("/api/genres/", movieHandler.GetGenres)
 
 	//Handler fo static files (frontend)
 	http.Handle("/", http.FileServer(http.Dir("public")))
