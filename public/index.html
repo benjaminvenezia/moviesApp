@@ -7,6 +7,7 @@
       <link rel="stylesheet" href="styles.css">
       <link rel="manifest" href="app.webmanifest">
       <link rel="icon" href="images/icon.png">
+      <script src="app.js" type="module" defer></script>
   </head>
   <body>
     <header>
@@ -26,11 +27,32 @@
         </div>
     </header>
   <main>
+    <home-page></home-page>
+    <!-- <animated-loading data-elements="5" data-width="170px" data-height="230px"></animated-loading> -->
 
   </main>
-    <p>(C) Movies App</p>
   <footer>
-
+    <p>(C) Movies App</p>
   </footer>
   </body>
 </html>
+
+
+
+
+
+<template id="template-home">
+    <section class="vertical-scroll" id="top-10">
+        <h2>This Week's Top Movies</h2>
+        <ul>
+
+        </ul>
+    </section>
+    <section class="vertical-scroll" id="random">
+        <h2>Something to watch today</h2>
+        <ul>
+
+        </ul>
+    </section>
+</template>
+
