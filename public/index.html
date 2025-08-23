@@ -9,13 +9,28 @@
       <link rel="icon" href="images/icon.png">
   </head>
   <body>
-    <h1>Welcome Movies app from container 2</h1>
+    <header>
+    <h1><img src="images/logo.png" height="35" alt="MovieLogo"></h1>
+        <nav>
+            <ul>
+                <li><a class="navlink" href="/">Movies</a> </li>
+                <li><a class="navlink" href="/account/favorites">Favorites</a> </li>
+                <li><a class="navlink" href="/account/watchlist">Watchlist</a> </li>
+                <li><a class="navlink" href="/account/">My Account</a> </li>
+            </ul>
+        </nav>
+        <div>
+            <form onsubmit="app.search(event)">
+                <input type="search" placeholder="Search Movies">
+            </form>
+        </div>
+    </header>
+  <main>
 
-    <p>
-      Lorems ipsum dolor dd sit amet, consectetur adipisicing elit. Itaque
-      soluta, commodi temporibus alias in quos aspernatur. Exercitationem
-      sapiente officiis at, quia ab itaque perspiciatis maiores quas porro nulla
-      non atque.
-    </p>
+  </main>
+    <p>(C) Movies App</p>
+  <footer>
+
+  </footer>
   </body>
 </html>
